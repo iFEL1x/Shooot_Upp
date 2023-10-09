@@ -4,10 +4,10 @@ namespace CodeBase.Component
 {
     public class ControlReflectionComponent : MonoBehaviour
     {
-        [SerializeField] protected float _rightPosition;
-        [SerializeField] protected float _leftPosition;
-        [SerializeField] private float _maxRightPosition;
-        [SerializeField] private float _maxLeftPosition;
+        protected const float RightPosition = 7.9f;
+        protected const float LeftPosition = -7.9f;
+        private const float MaxRightPosition = 15;
+        private const float MaxLeftPosition = -15f;
         
         private void FixedUpdate()
         {
@@ -16,10 +16,10 @@ namespace CodeBase.Component
         
         private void ControlClonePositionX()
         {
-            if (transform.position.x > _maxRightPosition)
-                SetPositionX(_leftPosition);
-            else if (transform.position.x < _maxLeftPosition) 
-                SetPositionX(_rightPosition);
+            if (transform.position.x > MaxRightPosition)
+                SetPositionX(LeftPosition);
+            else if (transform.position.x < MaxLeftPosition) 
+                SetPositionX(RightPosition);
         }
         
         protected virtual void SetPositionX(float newPositionX)

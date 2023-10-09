@@ -1,17 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CodeBase.Component
 {
     public class ControlCloneComponent : ControlReflectionComponent
     {
-        [SerializeField] private Transform _parent;
-        [SerializeField] private bool _isLeft;
+        public bool _isLeft;
+        
+        private Transform _parent;
         private Vector3 _newPosition;
         private float _fixPositionX;
-
+        
         private void Start()
         {
-            _fixPositionX = _isLeft ? _leftPosition : _rightPosition;
+            _parent = FindObjectOfType<CloneCreation>()
+                .GetComponent<Transform>();
+            
+            _fixPositionX = _isLeft ? LeftPosition : RightPosition;
         }
                 
         private void Update()
@@ -30,12 +35,12 @@ namespace CodeBase.Component
 
         private void AdjustmentPosition()
         {
-            if (_parent.position.x < _leftPosition)
+            if (_parent.position.x < LeftPosition)
                 _fixPositionX = Mathf.Abs(_fixPositionX * 2);
-            else if (_parent.position.x > _rightPosition)
+            else if (_parent.position.x > RightPosition)
                 _fixPositionX *= -2;
             else
-                _fixPositionX = _isLeft ? _leftPosition : _rightPosition;
+                _fixPositionX = _isLeft ? LeftPosition : RightPosition;
         }
     }
 }
