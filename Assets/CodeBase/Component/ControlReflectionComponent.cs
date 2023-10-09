@@ -4,34 +4,35 @@ namespace CodeBase.Component
 {
     public class ControlReflectionComponent : MonoBehaviour
     {
-        protected Rigidbody2D _rigidbody;
-        protected const float RightPosition = 7.9f;
-        protected const float LeftPosition = -7.9f;
-        private const float MaxRightPosition = 15;
-        private const float MaxLeftPosition = -15f;
-        
+        private Rigidbody2D _rigidbody;
+        protected const float RightPosition = 4.25f;
+        protected const float LeftPosition = -4.25f;
+        protected const float MaxRightPosition = 8.5f;
+        protected const float MaxLeftPosition = -8.4f;
+
+
         protected virtual void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        protected virtual void FixedUpdate()
+        protected virtual void Update()
         {
             ControlClonePositionX();
         }
         
         private void ControlClonePositionX()
         {
-            if (_rigidbody.position.x > MaxRightPosition)
+            if (transform.position.x > RightPosition)
                 SetPositionX(LeftPosition);
-            else if (_rigidbody.position.x < MaxLeftPosition) 
+            else if (transform.position.x < LeftPosition) 
                 SetPositionX(RightPosition);
         }
         
         protected virtual void SetPositionX(float newPositionX)
         {
             _rigidbody.position = new Vector3(
-                _rigidbody.position.x + newPositionX,
+                newPositionX, 
                 _rigidbody.position.y);
         }
     }

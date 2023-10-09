@@ -563,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352825805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 1}
+  m_LocalPosition: {x: 0, y: -15.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28475c2ce015407984a636f5b8fe7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 20
+  _force: 40
   _rotationSpeed: 15
   _maxAngularSpeed: 400
 --- !u!4 &1805789291
@@ -825,8 +825,9 @@ MonoBehaviour:
   _sizePool: 30
   _levels:
   - {fileID: 7571764506786661678, guid: eacefd13efa42be4398ae0c79a9e6052, type: 3}
-  - {fileID: 7571764506786661678, guid: eacefd13efa42be4398ae0c79a9e6052, type: 3}
-  - {fileID: 7571764506786661678, guid: eacefd13efa42be4398ae0c79a9e6052, type: 3}
+  - {fileID: 7571764506786661678, guid: d1c03c6a87f44c84287c7bb84aa90049, type: 3}
+  - {fileID: 7571764506786661678, guid: 62f5bf72bbc702c48b6df4b0b75cffa0, type: 3}
+  - {fileID: 7571764506786661678, guid: eaf7c2f190931b2498c981de78a9e927, type: 3}
   _ignoreLayer:
     serializedVersion: 2
     m_Bits: 64

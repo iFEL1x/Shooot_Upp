@@ -29,9 +29,7 @@ namespace CodeBase
         private void Update()
         {
             if(Input.GetMouseButtonDown(0))
-            {
                 SetImpulse();
-            }
         }
     
         private void SetImpulse()

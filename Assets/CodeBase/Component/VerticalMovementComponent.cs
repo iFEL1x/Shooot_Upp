@@ -19,8 +19,7 @@ namespace CodeBase.Component
 
         private void Moved()
         {
-            if (_playerRigidbody.velocity.y > 0)
-                transform.Translate(0, _playerRigidbody.velocity.y * -Time.deltaTime, 0);
+            transform.Translate(0, _playerRigidbody.velocity.y * -Time.deltaTime, 0);
         }
     }
 }
