@@ -1,31 +1,33 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace CodeBase
 {
     public class ObjectPool : MonoBehaviour
     {
-        protected static GameObject[] ObjectsPool;
+        protected static List<GameObject> Pool;
 
         [SerializeField] private GameObject _prefab;
         [SerializeField] private int _sizePool;
 
-        private void Start()
+        protected virtual void Start()
         {
             CreatePool();
         }
 
         private void CreatePool()
         {
-            ObjectsPool = new GameObject[_sizePool];
+            Pool = new List<GameObject>();
 
             for (int i = 0; i < _sizePool; i++)
             {
                 GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity);
                 obj.SetActive(false);
-                ObjectsPool[i] = obj;
+                Pool.Add(obj);
             }
         }
+
+        public void ReturnToPool(GameObject obj) =>
+            Pool.Add(obj);
     }
 }

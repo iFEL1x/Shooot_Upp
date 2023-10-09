@@ -4,14 +4,12 @@ namespace CodeBase.Component
 {
     public class ControlHightComponent : MonoBehaviour
     {
-        public static bool MaxHight;
-        
-        private Rigidbody2D _rb;
+        private Rigidbody2D _playerRigidbody;
 
     
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            _playerRigidbody = GetComponent<Rigidbody2D>();
         }
         
         private void FixedUpdate()
@@ -22,15 +20,7 @@ namespace CodeBase.Component
         private void ControlMaxHight()
         {
             if (transform.position.y > 2)
-            {
-                MaxHight = true;
-    
-                Vector2 maxHight = _rb.position;
-                maxHight.y = 2f;
-                _rb.position = maxHight;
-            }
-            else
-                MaxHight = false;
+                _playerRigidbody.position = new Vector2(_playerRigidbody.position.x, 2f);
         }
     }
 }

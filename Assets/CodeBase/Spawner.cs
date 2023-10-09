@@ -4,29 +4,35 @@ namespace CodeBase
 {
     public class Spawner : ObjectPool
     {
-        [SerializeField] private LevelSample[] _levels;
-        private int _loadedLevel;
-        private bool _currentLevelEmpty;
+        [SerializeField] private LevelTemplate[] _levels;
+        [SerializeField] private LayerMask _ignoreLayer;
 
-        private void Update()
+        private int _loadedLevel;
+        private BoxCollider2D _collider;
+
+        protected override void Start()
         {
-            if (!_currentLevelEmpty)
+            base.Start();
+            _collider = GetComponent<BoxCollider2D>();
+        }
+        
+        private void LateUpdate()
+        {
+            if (!Physics2D.OverlapBox(_collider.bounds.center, _collider.bounds.size, 0f, _ignoreLayer))
             {
-                Transform[] level = _levels[0].Objects;
-                for (int i = 0; i < level.Length; i++)
+                Transform[] objects = _levels[Random.Range(0, _levels.Length)].Objects;
+                
+                for (int i = 0; i < objects.Length; i++)
                 {
-                    var obj = ObjectsPool[i];
+                    var obj = Pool[0];
                     
-                    if(!obj.activeInHierarchy)
-                    {
-                        obj.SetActive(true);
-                        obj.transform.position = level[i].position;
-                        obj.transform.rotation = level[i].rotation;
-                    }
+                    Pool.RemoveAt(0);
+                    obj.transform.position = objects[i].position;
+                    obj.transform.rotation = objects[i].rotation;
+                    obj.SetActive(true);
                 }
 
                 _loadedLevel++;
-                _currentLevelEmpty = true;
             }
         }
     }

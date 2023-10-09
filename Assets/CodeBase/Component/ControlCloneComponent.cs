@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase.Component
 {
@@ -7,37 +6,37 @@ namespace CodeBase.Component
     {
         public bool _isLeft;
         
-        private Transform _parent;
-        private Vector3 _newPosition;
+        private Rigidbody2D _parentRigidbody;
+        private Vector2 _newPosition;
         private float _fixPositionX;
         
-        private void Start()
+        protected override void Start()
         {
-            _parent = FindObjectOfType<CloneCreation>()
-                .GetComponent<Transform>();
+            base.Start();
+            
+            _parentRigidbody = FindObjectOfType<CloneCreation>()
+                .GetComponent<Rigidbody2D>();
             
             _fixPositionX = _isLeft ? LeftPosition : RightPosition;
         }
                 
-        private void Update()
+        protected override void FixedUpdate()
         {
-            _newPosition = _parent.position;
-            _newPosition.x += _fixPositionX;
+            base.FixedUpdate();
             
-            transform.position = _newPosition;
-            transform.rotation = _parent.rotation;
+            _newPosition = new Vector2(
+                _parentRigidbody.position.x + _fixPositionX, 
+                _parentRigidbody.position.y);
+            
+            _rigidbody.position = _newPosition;
+            _rigidbody.rotation = _parentRigidbody.rotation;
         }
 
         protected override void SetPositionX(float newPositionX)
         {
-            AdjustmentPosition();
-        }
-
-        private void AdjustmentPosition()
-        {
-            if (_parent.position.x < LeftPosition)
+            if (_parentRigidbody.position.x < LeftPosition)
                 _fixPositionX = Mathf.Abs(_fixPositionX * 2);
-            else if (_parent.position.x > RightPosition)
+            else if (_parentRigidbody.position.x > RightPosition)
                 _fixPositionX *= -2;
             else
                 _fixPositionX = _isLeft ? LeftPosition : RightPosition;

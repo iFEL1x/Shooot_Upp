@@ -2,7 +2,7 @@
 
 namespace CodeBase
 {
-    public class LevelSample : MonoBehaviour
+    public class LevelTemplate : MonoBehaviour
     {
         public Transform[] Objects;
     }
