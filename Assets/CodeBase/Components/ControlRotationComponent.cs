@@ -4,28 +4,20 @@ namespace CodeBase.Components
 {
     public class ControlRotationComponent : MonoBehaviour
     {
-        private float _maxAngularVelocity;
         private Rigidbody2D _rigidbody;
 
-        public float MaxAngularVelocity
-        {
-            set { _maxAngularVelocity = value; }
-        }
-        
-        private void Awake()
-        {
+        public float MaxAngularVelocity { get; set; }
+
+        private void Awake() =>
             _rigidbody = GetComponent<Rigidbody2D>();
-        }
-        
-        private void FixedUpdate()
-        {
+
+        private void FixedUpdate() =>
             ControlAngleRotation();
-        }
-        
+
         private void ControlAngleRotation()
         {
-            if (_rigidbody.angularVelocity < -_maxAngularVelocity 
-                || _rigidbody.angularVelocity > _maxAngularVelocity)
+            if (_rigidbody.angularVelocity < -MaxAngularVelocity 
+                || _rigidbody.angularVelocity > MaxAngularVelocity)
                 _rigidbody.angularVelocity *= 0.5f;
         }
     }

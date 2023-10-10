@@ -3,12 +3,15 @@ using UnityEngine;
 
 namespace CodeBase.Handler
 {
-    public class Ammunation : MonoBehaviour
+    public class AmmoCounter : MonoBehaviour
     {
         [SerializeField] private int _maxAmmo = 10;
         [SerializeField] private TMP_Text _textMesh;
 
-        public int Ammmo
+        private void Start() =>
+            _textMesh.text = _maxAmmo.ToString();
+
+        public int Ammo
         {
             get { return _maxAmmo; }
             set

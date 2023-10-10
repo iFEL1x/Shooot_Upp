@@ -4,6 +4,6 @@ namespace CodeBase.Utils
 {
     public class LevelTemplate : MonoBehaviour
     {
-        public Transform[] Objects;
+        public GameObject[] Objects;
     }
 }

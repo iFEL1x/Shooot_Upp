@@ -17,16 +17,14 @@ namespace CodeBase
             _collider = GetComponent<BoxCollider2D>();
         }
         
-        private void LateUpdate()
-        {
+        private void LateUpdate() =>
             SpawnObjectsForLvl();
-        }
 
         private void SpawnObjectsForLvl()
         {
             if (!Physics2D.OverlapBox(_collider.bounds.center, _collider.bounds.size, 0f, _ignoreLayer))
             {
-                Transform[] objects = _levels[Random.Range(0, _levels.Length)].Objects;
+                GameObject[] objects = _levels[Random.Range(0, _levels.Length)].Objects;
 
                 for (int i = 0; i < objects.Length; i++)
                 {
@@ -35,13 +33,16 @@ namespace CodeBase
                         Debug.LogWarning($"Pool is empty, need to increase the pool.");
                         return;
                     }
-
-                    var obj = Pool[0];
-
-                    Pool.RemoveAt(0);
-                    obj.transform.position = objects[i].position;
-                    obj.transform.rotation = objects[i].rotation;
-                    obj.SetActive(true);
+      
+                    GameObject obj = Pool.Find(obj => obj.CompareTag(objects[i].tag));
+                    
+                    if (obj)
+                    {
+                        Pool.RemoveAt(0);
+                        obj.transform.position = objects[i].transform.position;
+                        obj.transform.rotation = objects[i].transform.rotation;
+                        obj.SetActive(true);
+                    }
                 }
             }
         }

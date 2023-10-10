@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 namespace CodeBase.Button
 {
-    public class ButtonRestart : MonoBehaviour
+    public class RestartLevel : MonoBehaviour
     {
         public void Restart()
         {
-            var scene = SceneManager.GetActiveScene();
+            Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
     }

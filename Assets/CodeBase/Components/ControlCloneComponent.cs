@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using CodeBase.Utils;
 
 namespace CodeBase.Components
 {
@@ -10,11 +9,10 @@ namespace CodeBase.Components
         private float _fixPositionX;
         private Transform _parentTransform;
         
-        
         protected override void Start()
         {
-            _parentTransform = FindObjectOfType<CloneCreation>()
-                .GetComponent<Transform>();
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            _parentTransform = player.GetComponent<Transform>();
             
             _fixPositionX = LeftBehindScreen;
         }
@@ -22,10 +20,10 @@ namespace CodeBase.Components
         protected override void Update()
         {
             base.Update();
-            UpdatePosition();
+            CloneParentPosition();
         }
 
-        private void UpdatePosition()
+        private void CloneParentPosition()
         {
             Vector2 newPosition = new Vector2(
                 _parentTransform.position.x + _fixPositionX,
@@ -35,7 +33,7 @@ namespace CodeBase.Components
             transform.rotation = _parentTransform.rotation;
         }
 
-        protected override void SetPositionX(float newPositionX)
+        protected override void SwitchPositionX(float newPositionX)
         {
             if (_parentTransform.position.x < LeftScreen + 1f)
                 _fixPositionX = RightBehindScreen;

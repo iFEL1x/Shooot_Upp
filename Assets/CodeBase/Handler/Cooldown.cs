@@ -14,9 +14,7 @@ namespace CodeBase.Handler
                 _timeCooldown = 1.5f;
         }
 
-        public void Reset()
-        {
+        public void Reset() =>
             _timesUp = Time.time + _timeCooldown;
-        }
     }
 }

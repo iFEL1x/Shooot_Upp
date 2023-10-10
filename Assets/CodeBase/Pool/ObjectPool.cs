@@ -7,23 +7,28 @@ namespace CodeBase.Pool
     {
         protected static List<GameObject> Pool;
 
-        [SerializeField] private GameObject _prefab;
-        [SerializeField] private int _sizePool;
+        [SerializeField] private Rigidbody2D _playerRigidbody2D;
+        [SerializeField] private List<GameObject> _prefabs;
+        [SerializeField] private int[] _sizePool;
 
-        protected virtual void Start()
-        {
+        protected virtual void Start() =>
             CreatePool();
-        }
 
         private void CreatePool()
         {
             Pool = new List<GameObject>();
-
-            for (int i = 0; i < _sizePool; i++)
+            
+            for (int j = 0; j < _prefabs.Count; j++)
             {
-                GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity);
-                obj.SetActive(false);
-                Pool.Add(obj);
+                GameObject prefab = _prefabs[j];
+                int size = _sizePool[j];
+                
+                for (int i = 0; i < size; i++)
+                {
+                    GameObject obj = Instantiate(prefab, transform.position, Quaternion.identity);
+                    obj.SetActive(false);
+                    Pool.Add(obj);
+                }
             }
         }
 

@@ -13,9 +13,8 @@ namespace CodeBase.Handler
         private Rigidbody2D _rigidbody;
         private ControlRotationComponent _controlRotation;
         private Cooldown _cooldown;
-        private Ammunation _ammunation;
-
-
+        private AmmoCounter _ammoCounter;
+        
         private void Awake()
         {
             _rigidbody = FindObjectOfType<CloneCreation>()
@@ -23,21 +22,22 @@ namespace CodeBase.Handler
             
             _controlRotation = _rigidbody.GetComponent<ControlRotationComponent>();
             _cooldown = GetComponent<Cooldown>();
-            _ammunation = GetComponent<Ammunation>();
+            _ammoCounter = GetComponent<AmmoCounter>();
         }
 
-        private void Start()
-        {
+        private void Start() =>
             _controlRotation.MaxAngularVelocity = _maxAngularSpeed;
-        }
 
         private void Update()
         {
-            if(Input.GetMouseButtonDown(0) && _cooldown.IsReady && _ammunation.Ammmo > 0)
+            if(Input.GetMouseButtonDown(0))
             {
-                SetImpulse();
-                _cooldown.Reset();
-                _ammunation.Ammmo--;
+                if (_cooldown.IsReady && _ammoCounter.Ammo > 0)
+                {
+                    SetImpulse();
+                    _cooldown.Reset();
+                    _ammoCounter.Ammo--;
+                }
             }
         }
     

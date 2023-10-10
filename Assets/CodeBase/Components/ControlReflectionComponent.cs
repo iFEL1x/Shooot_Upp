@@ -9,25 +9,21 @@ namespace CodeBase.Components
         private Rigidbody2D _rigidbody;
 
 
-        protected virtual void Start()
-        {
+        protected virtual void Start() =>
             _rigidbody = GetComponent<Rigidbody2D>();
-        }
 
-        protected virtual void Update()
-        {
-            ControlClonePositionX();
-        }
-        
-        private void ControlClonePositionX()
+        protected virtual void Update() =>
+            ControlPositionX();
+
+        private void ControlPositionX()
         {
             if (transform.position.x > RightScreen)
-                SetPositionX(LeftScreen);
+                SwitchPositionX(LeftScreen);
             else if (transform.position.x < LeftScreen) 
-                SetPositionX(RightScreen);
+                SwitchPositionX(RightScreen);
         }
         
-        protected virtual void SetPositionX(float newPositionX)
+        protected virtual void SwitchPositionX(float newPositionX)
         {
             _rigidbody.position = new Vector3(
                 newPositionX, 

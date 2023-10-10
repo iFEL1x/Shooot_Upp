@@ -1,33 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using CodeBase.Pool;
-
+using UnityEngine.Events;
 
 namespace CodeBase.Components
 {
     public class CollisionComponent : MonoBehaviour
     {
-        [SerializeField] private List<string> _name;
-        private ObjectPool _pool;
-
-        private void Start()
-        {
-            _pool = FindObjectOfType<ObjectPool>();
-        }
+        [SerializeField] private string _name;
+        [SerializeField] private EnterEvent _action;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(_name.Contains(other.tag))
+            if(other.CompareTag(_name))
             {
-                other.gameObject.SetActive(false);
-                _pool.ReturnToPool(other.gameObject);
-            }
-            else if(other.CompareTag("Player"))
-            {
-                var scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
+                _action.Invoke(other.gameObject);
             }
         }
+    }
+            
+    [Serializable]
+    public class EnterEvent : UnityEvent<GameObject>
+    {
     }
 }

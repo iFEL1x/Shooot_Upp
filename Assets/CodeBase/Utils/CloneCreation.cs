@@ -6,9 +6,7 @@ namespace CodeBase.Utils
     {
         [SerializeField] private GameObject _clone;
         
-        private void Start()
-        {
+        private void Start() =>
             Instantiate(_clone);
-        }
     }
 }
