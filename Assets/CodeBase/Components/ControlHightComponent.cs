@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Component
+namespace CodeBase.Components
 {
     public class ControlHightComponent : MonoBehaviour
     {

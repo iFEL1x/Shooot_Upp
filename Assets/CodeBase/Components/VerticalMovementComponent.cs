@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using CodeBase.Utils;
 
-namespace CodeBase.Component
+namespace CodeBase.Components
 {
     public class VerticalMovementComponent : MonoBehaviour
     {

@@ -1,16 +1,19 @@
-﻿using CodeBase.Component;
-using UnityEngine;
+﻿using UnityEngine;
+using CodeBase.Utils;
+using CodeBase.Components;
 
-namespace CodeBase
+namespace CodeBase.Handler
 {
     public class MoveHandler : MonoBehaviour
     {
         [SerializeField] private float _force;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _maxAngularSpeed;
-        
+
         private Rigidbody2D _rigidbody;
         private ControlRotationComponent _controlRotation;
+        private Cooldown _cooldown;
+        private Ammunation _ammunation;
 
 
         private void Awake()
@@ -19,6 +22,8 @@ namespace CodeBase
                 .gameObject.GetComponent<Rigidbody2D>();
             
             _controlRotation = _rigidbody.GetComponent<ControlRotationComponent>();
+            _cooldown = GetComponent<Cooldown>();
+            _ammunation = GetComponent<Ammunation>();
         }
 
         private void Start()
@@ -28,8 +33,12 @@ namespace CodeBase
 
         private void Update()
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && _cooldown.IsReady && _ammunation.Ammmo > 0)
+            {
                 SetImpulse();
+                _cooldown.Reset();
+                _ammunation.Ammmo--;
+            }
         }
     
         private void SetImpulse()

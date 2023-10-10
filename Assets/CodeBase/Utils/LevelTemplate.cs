@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.Utils
 {
     public class LevelTemplate : MonoBehaviour
     {

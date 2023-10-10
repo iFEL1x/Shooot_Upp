@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Component
+namespace CodeBase.Components
 {
     public class ControlReflectionComponent : MonoBehaviour
     {
+        protected const float RightScreen = 4f;
+        protected const float LeftScreen = -4f;
         private Rigidbody2D _rigidbody;
-        protected const float RightPosition = 4.25f;
-        protected const float LeftPosition = -4.25f;
-        protected const float MaxRightPosition = 8.5f;
-        protected const float MaxLeftPosition = -8.4f;
 
 
         protected virtual void Start()
@@ -23,10 +21,10 @@ namespace CodeBase.Component
         
         private void ControlClonePositionX()
         {
-            if (transform.position.x > RightPosition)
-                SetPositionX(LeftPosition);
-            else if (transform.position.x < LeftPosition) 
-                SetPositionX(RightPosition);
+            if (transform.position.x > RightScreen)
+                SetPositionX(LeftScreen);
+            else if (transform.position.x < LeftScreen) 
+                SetPositionX(RightScreen);
         }
         
         protected virtual void SetPositionX(float newPositionX)

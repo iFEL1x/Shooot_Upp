@@ -224,4 +224,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff778a99d6540468d2db7d050241e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Coin
+  _name:
+  - Coin
