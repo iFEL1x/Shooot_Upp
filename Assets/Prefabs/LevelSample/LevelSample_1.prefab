@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 351415822}
   m_Layer: 0
-  m_Name: Booster(left)
-  m_TagString: Buster (left)
+  m_Name: Booster (3)
+  m_TagString: Booster
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1469335117}
   m_Layer: 0
-  m_Name: Booster(right)
-  m_TagString: Buster (right)
+  m_Name: Booster (2)
+  m_TagString: Booster
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1564442914}
   m_Layer: 0
-  m_Name: Booster(up)
-  m_TagString: Buster (up)
+  m_Name: Booster (1)
+  m_TagString: Booster
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,14 +249,14 @@ Transform:
   - {fileID: 8248799869080737749}
   - {fileID: 8585328419164942779}
   - {fileID: 2434772192900171843}
+  - {fileID: 6594638961622371971}
+  - {fileID: 1564442914}
+  - {fileID: 1469335117}
+  - {fileID: 351415822}
   - {fileID: 7295373410286093067}
   - {fileID: 4150762478413091544}
-  - {fileID: 6594638961622371971}
-  - {fileID: 351415822}
-  - {fileID: 1469335117}
-  - {fileID: 1564442914}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7571764506786661678
 MonoBehaviour:
@@ -274,9 +274,12 @@ MonoBehaviour:
   - {fileID: 1046495966384659579}
   - {fileID: 4812259521359251439}
   - {fileID: 6201135504931691955}
+  - {fileID: 8889618819598597455}
+  - {fileID: 351415821}
+  - {fileID: 1469335116}
+  - {fileID: 1564442913}
   - {fileID: 5718786174204742292}
   - {fileID: 7582047132958873387}
-  - {fileID: 8889618819598597455}
 --- !u!1 &7582047132958873387
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +323,7 @@ GameObject:
   m_Layer: 0
   m_Name: Ammo (1)
   m_TagString: Ammo
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -331,7 +334,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8889618819598597455}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1

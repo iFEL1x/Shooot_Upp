@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Components
+namespace CodeBase.Player
 {
-    public class ControlReflectionComponent : MonoBehaviour
+    public class Gun : MonoBehaviour
     {
         protected const float RightScreen = 4f;
         protected const float LeftScreen = -4f;
         private Rigidbody2D _rigidbody;
-
 
         protected virtual void Start() =>
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -15,7 +14,7 @@ namespace CodeBase.Components
         protected virtual void Update() =>
             ControlPositionX();
 
-        private void ControlPositionX()
+        protected virtual void ControlPositionX()
         {
             if (transform.position.x > RightScreen)
                 SwitchPositionX(LeftScreen);

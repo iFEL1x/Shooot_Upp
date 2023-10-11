@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Components
+namespace CodeBase.Player
 {
-    public class ControlCloneComponent : ControlReflectionComponent
+    public class GunClone : Gun
     {
-        private const float RightBehindScreen = 8f;
-        private const float LeftBehindScreen = -8f;
         private float _fixPositionX;
         private Transform _parentTransform;
         
+        public GameObject Gun { get; set; }
+        
         protected override void Start()
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            _parentTransform = player.GetComponent<Transform>();
-            
-            _fixPositionX = LeftBehindScreen;
+            _parentTransform = Gun.GetComponent<Transform>();
+            _fixPositionX = RightScreen * 2f;
         }
                 
         protected override void Update()
@@ -33,12 +31,17 @@ namespace CodeBase.Components
             transform.rotation = _parentTransform.rotation;
         }
 
-        protected override void SwitchPositionX(float newPositionX)
+        protected override void ControlPositionX()
         {
             if (_parentTransform.position.x < LeftScreen + 1f)
-                _fixPositionX = RightBehindScreen;
+                SwitchPositionX(RightScreen);
             else if (_parentTransform.position.x > RightScreen - 1f)
-                _fixPositionX = LeftBehindScreen;
+                SwitchPositionX(LeftScreen);
+        }
+
+        protected override void SwitchPositionX(float newPositionX)
+        {
+            _fixPositionX = newPositionX * 2f;
         }
     }
 }

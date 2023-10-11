@@ -1,7 +1,7 @@
 ﻿using CodeBase.Handler;
 using UnityEngine;
 
-namespace CodeBase.Components.Events
+namespace CodeBase.Components
 {
     public class AddAmmoComponent : MonoBehaviour
     {

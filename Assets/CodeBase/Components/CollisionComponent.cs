@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,18 +7,28 @@ namespace CodeBase.Components
 {
     public class CollisionComponent : MonoBehaviour
     {
-        [SerializeField] private string _name;
-        [SerializeField] private EnterEvent _action;
+        [SerializeField] private CollisionEvent[] _collisionEvents;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.CompareTag(_name))
+            foreach (CollisionEvent colEvent in _collisionEvents)
             {
-                _action.Invoke(other.gameObject);
+                if(colEvent.Tag.Contains(other.tag))
+                {
+                    colEvent.Action.Invoke(other.gameObject);
+                    break;
+                }
             }
         }
     }
-            
+
+    [Serializable]
+    public class CollisionEvent 
+    {
+        public List<string> Tag;
+        public EnterEvent Action;
+    }
+    
     [Serializable]
     public class EnterEvent : UnityEvent<GameObject>
     {

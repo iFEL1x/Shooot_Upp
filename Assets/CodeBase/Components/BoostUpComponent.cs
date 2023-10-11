@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Components.Events
+namespace CodeBase.Components
 {
     public class BoostUpComponent : MonoBehaviour
     {

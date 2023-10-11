@@ -38,7 +38,7 @@ namespace CodeBase
                     
                     if (obj)
                     {
-                        Pool.RemoveAt(0);
+                        Pool.Remove(obj);
                         obj.transform.position = objects[i].transform.position;
                         obj.transform.rotation = objects[i].transform.rotation;
                         obj.SetActive(true);

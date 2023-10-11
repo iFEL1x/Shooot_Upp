@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CodeBase.Player;
+using UnityEngine;
 
 namespace CodeBase.Utils
 {
@@ -6,7 +7,10 @@ namespace CodeBase.Utils
     {
         [SerializeField] private GameObject _clone;
         
-        private void Start() =>
-            Instantiate(_clone);
+        private void Start()
+        {
+            GameObject clone = Instantiate(_clone);
+            clone.GetComponent<GunClone>().Gun = gameObject;
+        }
     }
 }

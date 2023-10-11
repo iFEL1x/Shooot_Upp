@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using CodeBase.Pool;
 
-namespace CodeBase.Components.Events
+namespace CodeBase.Components
 {
     public class ReturnToPoolComponent : MonoBehaviour
     {

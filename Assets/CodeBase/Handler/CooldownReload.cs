@@ -2,7 +2,7 @@
 
 namespace CodeBase.Handler
 {
-    public class Cooldown : MonoBehaviour
+    public class CooldownReload : MonoBehaviour
     {
         [SerializeField] [Range(1f, 2f)]private float _timeCooldown;
         private float _timesUp;

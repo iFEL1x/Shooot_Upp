@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using CodeBase.Utils;
-using CodeBase.Components;
+using CodeBase.Player;
 
 namespace CodeBase.Handler
 {
@@ -10,32 +9,32 @@ namespace CodeBase.Handler
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _maxAngularSpeed;
 
-        private Rigidbody2D _rigidbody;
-        private ControlRotationComponent _controlRotation;
-        private Cooldown _cooldown;
+        private Rigidbody2D _rigidbodyGun;
+        private ControlRotation _controlRotationGun;
+        private CooldownReload _cooldownReload;
         private AmmoCounter _ammoCounter;
         
         private void Awake()
         {
-            _rigidbody = FindObjectOfType<CloneCreation>()
-                .gameObject.GetComponent<Rigidbody2D>();
+            GameObject gun = GameObject.FindGameObjectWithTag("Player");
+            _rigidbodyGun = gun.GetComponent<Rigidbody2D>();
+            _controlRotationGun = gun.GetComponent<ControlRotation>();
             
-            _controlRotation = _rigidbody.GetComponent<ControlRotationComponent>();
-            _cooldown = GetComponent<Cooldown>();
+            _cooldownReload = GetComponent<CooldownReload>();
             _ammoCounter = GetComponent<AmmoCounter>();
         }
 
         private void Start() =>
-            _controlRotation.MaxAngularVelocity = _maxAngularSpeed;
+            _controlRotationGun.MaxAngularVelocity = _maxAngularSpeed;
 
         private void Update()
         {
             if(Input.GetMouseButtonDown(0))
             {
-                if (_cooldown.IsReady && _ammoCounter.Ammo > 0)
+                if (_cooldownReload.IsReady && _ammoCounter.Ammo > 0)
                 {
                     SetImpulse();
-                    _cooldown.Reset();
+                    _cooldownReload.Reset();
                     _ammoCounter.Ammo--;
                 }
             }
@@ -43,12 +42,12 @@ namespace CodeBase.Handler
     
         private void SetImpulse()
         {
-            _rigidbody.velocity = Vector2.zero;
-            _rigidbody.AddForce(_rigidbody.transform.up * _force, ForceMode2D.Impulse);
-            _rigidbody.AddTorque(NormalizeRotationZ() * _rotationSpeed, ForceMode2D.Impulse);
+            _rigidbodyGun.velocity = Vector2.zero;
+            _rigidbodyGun.AddForce(_rigidbodyGun.transform.up * _force, ForceMode2D.Impulse);
+            _rigidbodyGun.AddTorque(NormalizeRotationZ() * _rotationSpeed, ForceMode2D.Impulse);
         }
     
         private int NormalizeRotationZ() => 
-            _rigidbody.transform.rotation.z > 0 ? 1 : -1;
+            _rigidbodyGun.transform.rotation.z > 0 ? 1 : -1;
     }
 }
