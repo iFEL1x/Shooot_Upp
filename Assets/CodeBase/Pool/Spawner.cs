@@ -43,6 +43,11 @@ namespace CodeBase
                         obj.transform.rotation = objects[i].transform.rotation;
                         obj.SetActive(true);
                     }
+                    else
+                    {
+                        Debug.LogWarning($"Object with tag {objects[i]}, not found");
+                        return;
+                    }
                 }
             }
         }

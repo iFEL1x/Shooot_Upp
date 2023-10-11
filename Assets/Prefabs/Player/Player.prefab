@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 646157986767338366}
   - component: {fileID: 646157986767338337}
   - component: {fileID: 646157986767338336}
-  - component: {fileID: 646157986767338362}
+  - component: {fileID: 757471309}
   - component: {fileID: 2241679231692821893}
   - component: {fileID: 646157986767338364}
   - component: {fileID: 1523299926}
   - component: {fileID: -8466838419849814050}
   - component: {fileID: 928781962}
   - component: {fileID: 928781965}
+  - component: {fileID: 7232261192139774797}
   - component: {fileID: 928781963}
   m_Layer: 7
   m_Name: Player
@@ -35,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 646157986767338341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 1}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f82dfc5fc3c5a8f4080a3550427019c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31798bb84899b85488f8967e682d00d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,8 +121,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &646157986767338362
-BoxCollider2D:
+--- !u!60 &757471309
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,15 +157,20 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.45696092, y: -1.3170958}
+      - {x: 0.40632105, y: 1.0759921}
+      - {x: -0.50374675, y: 1.3179092}
+      - {x: -0.8723817, y: 0.8801551}
+      - {x: -0.29638982, y: 0.10832524}
+  m_UseDelaunayMesh: 0
 --- !u!114 &2241679231692821893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786ac345c46745649273b51f8e0eeb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addAmmoCount: 5
+  _addAmmoCount: 1
   _ammoCounter: {fileID: 0}
 --- !u!114 &928781962
 MonoBehaviour:
@@ -243,6 +249,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _force: 45
   _rigidbody: {fileID: 646157986767338336}
+--- !u!114 &7232261192139774797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646157986767338341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871e18448f0844669ab1ea748208a491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinsCounter: {fileID: 0}
 --- !u!114 &928781963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +280,18 @@ MonoBehaviour:
     Action:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 7232261192139774797}
+          m_TargetAssemblyTypeName: CodeBase.Components.AddCoinComponent, Assembly-CSharp
+          m_MethodName: AddCoin
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 928781962}
           m_TargetAssemblyTypeName: CodeBase.Components.ReturnToPoolComponent, Assembly-CSharp
           m_MethodName: ReturnToPool

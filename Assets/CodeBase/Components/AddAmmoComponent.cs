@@ -1,5 +1,5 @@
-﻿using CodeBase.Handler;
-using UnityEngine;
+﻿using UnityEngine;
+using CodeBase.Handler;
 
 namespace CodeBase.Components
 {

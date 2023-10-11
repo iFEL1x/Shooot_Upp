@@ -1,12 +1,12 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 namespace CodeBase.Handler
 {
     public class AmmoCounter : MonoBehaviour
     {
-        [SerializeField] private int _maxAmmo = 10;
         [SerializeField] private TMP_Text _textMesh;
+        [SerializeField] private int _maxAmmo = 10;
 
         private void Start() =>
             _textMesh.text = _maxAmmo.ToString();

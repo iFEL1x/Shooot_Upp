@@ -7,7 +7,6 @@ namespace CodeBase.Pool
     {
         protected static List<GameObject> Pool;
 
-        [SerializeField] private Rigidbody2D _playerRigidbody2D;
         [SerializeField] private List<GameObject> _prefabs;
         [SerializeField] private int[] _sizePool;
 
