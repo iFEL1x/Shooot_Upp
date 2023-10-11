@@ -10,12 +10,20 @@ namespace CodeBase.Pool
         [SerializeField] private List<GameObject> _prefabs;
         [SerializeField] private int[] _sizePool;
 
-        protected virtual void Start() =>
+        protected virtual void Start()
+        {
+            Pool = new List<GameObject>();
             CreatePool();
+        }
 
         private void CreatePool()
         {
-            Pool = new List<GameObject>();
+            if (_prefabs == null || _sizePool == null) return;
+            if (_prefabs.Count != _sizePool.Length)
+            {
+                Debug.LogWarning($"Size not specified for {_prefabs[^1].name}");
+                return;
+            }
             
             for (int j = 0; j < _prefabs.Count; j++)
             {
@@ -30,7 +38,7 @@ namespace CodeBase.Pool
                 }
             }
         }
-
+        
         public void ReturnToPool(GameObject obj) =>
             Pool.Add(obj);
     }

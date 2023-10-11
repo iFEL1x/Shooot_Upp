@@ -4,7 +4,7 @@ using CodeBase.Utils;
 
 namespace CodeBase
 {
-    public class Spawner : ObjectPool
+    public class Builder : ObjectPool
     {
         [SerializeField] private LevelTemplate[] _levels;
         [SerializeField] private LayerMask _ignoreLayer;
@@ -18,9 +18,9 @@ namespace CodeBase
         }
         
         private void LateUpdate() =>
-            SpawnObjectsForLvl();
+            SpawnObjectsToLevel();
 
-        private void SpawnObjectsForLvl()
+        private void SpawnObjectsToLevel()
         {
             if (!Physics2D.OverlapBox(_collider.bounds.center, _collider.bounds.size, 0f, _ignoreLayer))
             {

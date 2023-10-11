@@ -8,11 +8,12 @@ namespace CodeBase.Handler
         [SerializeField] private float _force;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _maxAngularSpeed;
-
+        
         private Rigidbody2D _rigidbodyGun;
         private ControlRotation _controlRotationGun;
         private CooldownReload _cooldownReload;
         private AmmoCounter _ammoCounter;
+        private ShotParticles _particle;
         
         private void Awake()
         {
@@ -22,6 +23,7 @@ namespace CodeBase.Handler
             
             _cooldownReload = GetComponent<CooldownReload>();
             _ammoCounter = GetComponent<AmmoCounter>();
+            _particle = GetComponent<ShotParticles>();
         }
 
         private void Start() =>
@@ -36,6 +38,7 @@ namespace CodeBase.Handler
                     SetImpulse();
                     _cooldownReload.Reset();
                     _ammoCounter.Ammo--;
+                    _particle.Shot();
                 }
             }
         }
