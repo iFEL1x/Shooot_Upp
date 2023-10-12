@@ -10,6 +10,6 @@ public class ResolutionManager : MonoBehaviour
 
     private void SetResolution(int width, int height)
     {
-        Screen.SetResolution(width, height, false);
+        Screen.SetResolution(width, height, FullScreenMode.FullScreenWindow);
     }
 }
