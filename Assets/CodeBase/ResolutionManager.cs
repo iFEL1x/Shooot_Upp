@@ -8,6 +8,8 @@ public class ResolutionManager : MonoBehaviour
     private void Start() =>
         SetResolution(_targetScreenWidth, _targetScreenHeight);
 
-    private void SetResolution(int width, int height) =>
+    private void SetResolution(int width, int height)
+    {
         Screen.SetResolution(width, height, false);
+    }
 }

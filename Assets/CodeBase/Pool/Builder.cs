@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using CodeBase.Pool;
 using CodeBase.Utils;
+using Random = UnityEngine.Random;
 
 namespace CodeBase
 {
@@ -15,9 +16,10 @@ namespace CodeBase
         {
             base.Start();
             _collider = GetComponent<BoxCollider2D>();
+            SpawnObjectsToLevel();
         }
-        
-        private void LateUpdate() =>
+
+        private void OnTriggerExit2D(Collider2D other) =>
             SpawnObjectsToLevel();
 
         private void SpawnObjectsToLevel()
@@ -25,7 +27,7 @@ namespace CodeBase
             if (!Physics2D.OverlapBox(_collider.bounds.center, _collider.bounds.size, 0f, _ignoreLayer))
             {
                 GameObject[] objects = _levels[Random.Range(0, _levels.Length)].Objects;
-
+                
                 for (int i = 0; i < objects.Length; i++)
                 {
                     if (Pool.Count == 0)
@@ -33,7 +35,7 @@ namespace CodeBase
                         Debug.LogWarning($"Pool is empty, need to increase the pool.");
                         return;
                     }
-      
+                    
                     GameObject obj = Pool.Find(obj => obj.CompareTag(objects[i].tag));
                     
                     if (obj)
