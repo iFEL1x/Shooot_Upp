@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase
+namespace CodeBase.BuildSettings
 {
     public class DynamicFramerate : MonoBehaviour
     {

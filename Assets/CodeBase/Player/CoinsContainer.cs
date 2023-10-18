@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using TMPro;
 
-namespace CodeBase.Handler
+namespace CodeBase.Player
 {
-    public class CoinsCounter : MonoBehaviour
+    public class CoinsContainer : MonoBehaviour
     {
         [SerializeField] private TMP_Text _textMesh;
-        [SerializeField]
         private int _currentCoins;
 
         public int CurrentCoins

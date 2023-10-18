@@ -1,36 +1,36 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Components
+namespace CodeBase.Controllers
 {
-    public class VerticalMovementComponent : MonoBehaviour
+    public class ItemMoveController : MonoBehaviour
     {
-        private Rigidbody2D _gunRigidbody;
+        private Rigidbody2D _playerRigidbody;
         private Rigidbody2D _rigidbody;
-        public Vector3 _currentPosition;
-        public Vector3 _destination;
+        private Vector3 _currentPosition;
+        private Vector3 _destination;
 
         private void Awake()
         {
-            _gunRigidbody = GameObject.FindGameObjectWithTag("Player")
+            _playerRigidbody = GameObject.FindGameObjectWithTag("Player")
                 .GetComponent<Rigidbody2D>();
             
             _rigidbody = GetComponent<Rigidbody2D>();
         }
-
+        
         private void OnEnable() =>
             _destination = new Vector3(transform.position.x, -15, 1);
 
         private void FixedUpdate() =>
-            Moved();
+            Move();
 
-        private void Moved()
+        private void Move()
         {
             _currentPosition = _rigidbody.position;
             
             Vector3 smoothedDelta = Vector3.MoveTowards(
                 _currentPosition,
                 _destination,
-                Time.fixedDeltaTime * _gunRigidbody.velocity.y);
+                _playerRigidbody.velocity.y * Time.deltaTime);
             
             _rigidbody.MovePosition(smoothedDelta);
         }

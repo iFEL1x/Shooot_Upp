@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 2271534145167228169}
   - component: {fileID: 8676282095873372630}
   - component: {fileID: -8909090966936867039}
+  - component: {fileID: 1132871170466664837}
+  - component: {fileID: -2172360084523671713}
+  - component: {fileID: 5330356362315638968}
   m_Layer: 6
   m_Name: Booster
   m_TagString: Booster
@@ -161,5 +164,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b19338b0384555825a9b6065087b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentPosition: {x: 0, y: 0, z: 0}
-  _destination: {x: 0, y: 0, z: 0}
+--- !u!114 &1132871170466664837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506032571875125324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff778a99d6540468d2db7d050241e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnCollision: 0
+  _collisionEvents:
+  - Tag:
+    - Player
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -2172360084523671713}
+          m_TargetAssemblyTypeName: CodeBase.Components.AddBoostComponent, Assembly-CSharp
+          m_MethodName: Boost
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5330356362315638968}
+          m_TargetAssemblyTypeName: CodeBase.Pool.ReturnToPool, Assembly-CSharp
+          m_MethodName: Return
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &-2172360084523671713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506032571875125324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5d408d95c54c82af8db48201c3a23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _force: 25
+--- !u!114 &5330356362315638968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506032571875125324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c13689c25f6402a8a156ec97908da25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

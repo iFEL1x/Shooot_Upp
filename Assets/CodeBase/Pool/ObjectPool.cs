@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CodeBase.Controllers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CodeBase.Pool
@@ -38,8 +39,5 @@ namespace CodeBase.Pool
                 }
             }
         }
-        
-        public void ReturnToPool(GameObject obj) =>
-            Pool.Add(obj);
     }
 }

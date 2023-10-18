@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controllers
 {
-    public class Gun : MonoBehaviour
+    public class ScreenPositionController : MonoBehaviour
     {
-        protected const float RightScreen = 4f;
-        protected const float LeftScreen = -4f;
+        [SerializeField] protected float edgeScreen = 4f;
         private Rigidbody2D _rigidbody;
 
         protected virtual void Start() =>
@@ -13,13 +12,13 @@ namespace CodeBase.Player
 
         protected virtual void Update() =>
             ControlPositionX();
-
+        
         protected virtual void ControlPositionX()
         {
-            if (transform.position.x > RightScreen)
-                SwitchPositionX(LeftScreen);
-            else if (transform.position.x < LeftScreen) 
-                SwitchPositionX(RightScreen);
+            if (transform.position.x > edgeScreen)
+                SwitchPositionX(-edgeScreen);
+            else if (transform.position.x < -edgeScreen) 
+                SwitchPositionX(edgeScreen);
         }
         
         protected virtual void SwitchPositionX(float newPositionX)

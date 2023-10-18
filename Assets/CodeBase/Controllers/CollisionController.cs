@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CodeBase.Components
+namespace CodeBase.Controllers
 {
-    public class CollisionComponent : MonoBehaviour
+    public class CollisionController : MonoBehaviour
     {
+        [SerializeField] private bool _returnCollision;
         [SerializeField] private CollisionEvent[] _collisionEvents;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            foreach (CollisionEvent colEvent in _collisionEvents)
+            foreach (CollisionEvent collisionEvent in _collisionEvents)
             {
-                if(colEvent.Tag.Contains(other.tag))
+                if(collisionEvent.Tag.Contains(other.tag))
                 {
-                    colEvent.Action.Invoke(other.gameObject);
+                    GameObject obj = _returnCollision ? other.gameObject : gameObject;
+                    collisionEvent.Action.Invoke(obj);
                     break;
                 }
             }

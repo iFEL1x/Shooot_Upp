@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
-using CodeBase.Handler;
+using CodeBase.Player;
 
 namespace CodeBase.Components
 {
     public class AddCoinComponent : MonoBehaviour
     {
-        [SerializeField] private CoinsCounter _coinsCounter;
+        private const string _TAG_PLAYER = "Player";
+        private CoinsContainer _coinsContainer;
+
+        private void Awake() =>
+            _coinsContainer = GameObject.FindGameObjectWithTag(_TAG_PLAYER).GetComponent<CoinsContainer>();
 
         public void AddCoin() =>
-            _coinsCounter.CurrentCoins++;
+            _coinsContainer.CurrentCoins++;
     }
 }

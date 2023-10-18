@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace CodeBase.Button
 {
-    public class RestartLevelButton : MonoBehaviour
+    public class RestartLevel : MonoBehaviour
     {
         public void Restart()
         {

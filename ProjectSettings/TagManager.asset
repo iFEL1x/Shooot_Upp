@@ -8,6 +8,8 @@ TagManager:
   - Ammo
   - Booster
   - Wall
+  - UI
+  - LevelBuilder
   layers:
   - Default
   - TransparentFX

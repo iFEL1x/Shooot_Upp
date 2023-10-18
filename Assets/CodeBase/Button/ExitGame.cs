@@ -2,9 +2,9 @@
 
 namespace CodeBase.Button
 {
-    public class ExitGameButton : MonoBehaviour
+    public class ExitGame : MonoBehaviour
     {
-        public void ExitGame()
+        public void Exit()
         {
             Application.Quit();
         }

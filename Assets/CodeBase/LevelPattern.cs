@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Utils
+namespace CodeBase
 {
-    public class LevelTemplate : MonoBehaviour
+    public class LevelPattern : MonoBehaviour
     {
         public GameObject[] Objects;
     }

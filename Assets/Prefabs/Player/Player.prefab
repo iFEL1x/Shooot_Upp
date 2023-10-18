@@ -43,14 +43,11 @@ GameObject:
   - component: {fileID: 646157986767338337}
   - component: {fileID: 646157986767338336}
   - component: {fileID: 757471309}
-  - component: {fileID: 2241679231692821893}
   - component: {fileID: 646157986767338364}
-  - component: {fileID: 1523299926}
-  - component: {fileID: -8466838419849814050}
-  - component: {fileID: 928781962}
-  - component: {fileID: 928781965}
-  - component: {fileID: 7232261192139774797}
-  - component: {fileID: 928781963}
+  - component: {fileID: 2147308454}
+  - component: {fileID: 2147308458}
+  - component: {fileID: 2147308457}
+  - component: {fileID: 2147308456}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -72,7 +69,7 @@ Transform:
   m_Children:
   - {fileID: 1828575533}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &646157986767338337
 SpriteRenderer:
@@ -138,7 +135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2.1
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -203,18 +200,6 @@ PolygonCollider2D:
       - {x: -0.8723817, y: 0.8801551}
       - {x: -0.29638982, y: 0.10832524}
   m_UseDelaunayMesh: 0
---- !u!114 &2241679231692821893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 646157986767338341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2ef72204bb55747be4b121ebfdeba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &646157986767338364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd5c77bc4744875bd62169e34c49109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1523299926
+  edgeScreen: 4
+--- !u!114 &2147308454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,11 +222,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 646157986767338341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d54912b0ac44339f89c909898da6e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 28475c2ce015407984a636f5b8fe7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clone: {fileID: 2662451926236898826, guid: 2acc3319c24ee9641bad50c58ec30092, type: 3}
---- !u!114 &-8466838419849814050
+  _force: 15
+  _rotationSpeed: 35
+  _maxAngularVelocity: 400
+  _timeCooldown: 0.5
+  _playerClone: {fileID: 0}
+  _cloneDistanceFromPlayer: 1
+--- !u!114 &2147308458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,12 +240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 646157986767338341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786ac345c46745649273b51f8e0eeb52, type: 3}
+  m_Script: {fileID: 11500000, guid: cab0b17ee47a4a42af473b7a8a40ae64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addAmmoCount: 1
-  _ammoCounter: {fileID: 0}
---- !u!114 &928781962
+  _prefab: {fileID: 0}
+  _particlePosition: {fileID: 1828575532}
+--- !u!114 &2147308457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,11 +254,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 646157986767338341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c13689c25f6402a8a156ec97908da25, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ff163b341774bcdbd9cf60d8b4493b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pool: {fileID: 0}
---- !u!114 &928781965
+  _textMesh: {fileID: 0}
+  _maxAmmo: 10
+--- !u!114 &2147308456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,109 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 646157986767338341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5d408d95c54c82af8db48201c3a23b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3502d2a70a5241c68645b44d7e724287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 45
-  _rigidbody: {fileID: 646157986767338336}
---- !u!114 &7232261192139774797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 646157986767338341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 871e18448f0844669ab1ea748208a491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinsCounter: {fileID: 0}
---- !u!114 &928781963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 646157986767338341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff778a99d6540468d2db7d050241e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collisionEvents:
-  - Tag:
-    - Coin
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7232261192139774797}
-          m_TargetAssemblyTypeName: CodeBase.Components.AddCoinComponent, Assembly-CSharp
-          m_MethodName: AddCoin
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 928781962}
-          m_TargetAssemblyTypeName: CodeBase.Components.ReturnToPoolComponent, Assembly-CSharp
-          m_MethodName: ReturnToPool
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - Tag:
-    - Ammo
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: -8466838419849814050}
-          m_TargetAssemblyTypeName: CodeBase.Components.AddAmmoComponent, Assembly-CSharp
-          m_MethodName: AddAmmo
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 928781962}
-          m_TargetAssemblyTypeName: CodeBase.Components.ReturnToPoolComponent, Assembly-CSharp
-          m_MethodName: ReturnToPool
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - Tag:
-    - Booster
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 928781965}
-          m_TargetAssemblyTypeName: CodeBase.Components.BoostUpComponent, Assembly-CSharp
-          m_MethodName: Boost
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  _textMesh: {fileID: 0}

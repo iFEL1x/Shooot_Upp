@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using CodeBase.Pool;
-using CodeBase.Utils;
 using Random = UnityEngine.Random;
 
-namespace CodeBase
+namespace CodeBase.Pool
 {
-    public class Builder : ObjectPool
+    public class LevelBuilder : ObjectPool
     {
-        [SerializeField] private LevelTemplate[] _levels;
+        [SerializeField] private LevelPattern[] _levels;
         [SerializeField] private LayerMask _ignoreLayer;
 
         private BoxCollider2D _collider;
@@ -52,6 +50,12 @@ namespace CodeBase
                     }
                 }
             }
+        }
+        
+        public void ReturnToPool(GameObject obj)
+        {
+            obj.SetActive(false);
+            Pool.Add(obj);
         }
     }
 }

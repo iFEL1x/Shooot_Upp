@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using TMPro;
 
-namespace CodeBase.Handler
+namespace CodeBase.Player
 {
-    public class AmmoCounter : MonoBehaviour
+    public class AmmoContainer : MonoBehaviour
     {
         [SerializeField] private TMP_Text _textMesh;
         [SerializeField] private int _maxAmmo = 10;
