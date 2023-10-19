@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using CodeBase.Player;
 
-namespace CodeBase.Components
+namespace CodeBase.Player.Components
 {
     public class AddAmmoComponent : MonoBehaviour
     {

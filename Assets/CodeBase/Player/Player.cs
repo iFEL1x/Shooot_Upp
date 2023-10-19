@@ -58,11 +58,11 @@ namespace CodeBase.Player
                 if (_reloadCooldown.IsReady && _ammoContainer.Ammo > 0)
                 {
                     SetImpulse();
-                    _reloadCooldown.Reset(Time.time);
+                    _reloadCooldown.Reset();
                     _ammoContainer.Ammo--;
                     _particleCreation.Shot();
                 }
-                Debug.Log($"Velocity: X = {_rigidbody.velocity.x} Y = {_rigidbody.velocity.y}");
+                //Debug.Log($"Velocity: X = {_rigidbody.velocity.x} Y = {_rigidbody.velocity.y}");
             }
         }
     

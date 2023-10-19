@@ -1542,13 +1542,7 @@ MonoBehaviour:
   - {fileID: 3506032571875125324, guid: 3c6b354f14dbdcd4f92eac45fe3ab097, type: 3}
   _sizePool: 280000000a0000000f0000000f000000
   _levels:
-  - {fileID: 7571764506786661678, guid: d1c03c6a87f44c84287c7bb84aa90049, type: 3}
-  - {fileID: 7571764506786661678, guid: 592923cd92e4a954cb352916cd8610a9, type: 3}
-  - {fileID: 7571764506786661678, guid: 22a6a6289e56cef469e11a34518ab5e4, type: 3}
   - {fileID: 7571764506786661678, guid: d443505ab00b58547897602e823d55cc, type: 3}
-  - {fileID: 7571764506786661678, guid: 1129d37d4e68bfa479a4ed12cfff0fd0, type: 3}
-  - {fileID: 7571764506786661678, guid: 8711fd2d8388a034d84a08e91233f07b, type: 3}
-  - {fileID: 7571764506786661678, guid: a600d19fed561894daffe077f3f487cd, type: 3}
   _ignoreLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1653,7 +1647,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _force
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _maxVelocity
@@ -1661,15 +1655,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _maxVelocityX
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _maxVelocityY
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _rotationSpeed
-      value: 30
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
+      propertyPath: _maxAngularVelocity
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2147308454, guid: ca200bfa0e05a044aa539809b03d92a6, type: 3}
       propertyPath: _cloneDistanceFromPlayer

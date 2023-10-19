@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CodeBase.Controllers
+namespace CodeBase.Components
 {
-    public class CollisionController : MonoBehaviour
+    public class CollisionComponents : MonoBehaviour
     {
         [SerializeField] private bool _returnCollision;
         [SerializeField] private CollisionEvent[] _collisionEvents;

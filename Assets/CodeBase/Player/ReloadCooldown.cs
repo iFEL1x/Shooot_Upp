@@ -19,7 +19,7 @@ namespace CodeBase.Player
                 _timeCooldown = 1.5f;
         }
 
-        public void Reset(float time) =>
-            _timesUp = time + _timeCooldown;
+        public void Reset() =>
+            _timesUp = Time.time + _timeCooldown;
     }
 }

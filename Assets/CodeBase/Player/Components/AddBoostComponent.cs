@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Components
+namespace CodeBase.Player.Components
 {
     public class AddBoostComponent : MonoBehaviour
     {
