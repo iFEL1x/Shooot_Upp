@@ -29,10 +29,11 @@ namespace CodeBase.Player
             _ammoContainer = GetComponent<AmmoContainer>();
             _particleCreation = GetComponent<ParticlesCreation>();
 
-            _reloadCooldown =  new ReloadCooldown(_timeCooldown);
+            _velocityController = new VelocityController(_rigidbody, _maxVelocityX, _maxVelocityY);
             _rotationController = new RotationController(_rigidbody, _maxAngularVelocity);
             _heightController = new HeightController(_rigidbody);
-            _velocityController = new VelocityController(_rigidbody, _maxVelocityX, _maxVelocityY);
+            _reloadCooldown =  new ReloadCooldown(_timeCooldown);
+
             
             _cloneCreation = new CloneCreation(
                 new GameObject(),
@@ -46,9 +47,9 @@ namespace CodeBase.Player
 
         private void FixedUpdate()
         {
+            _velocityController.VelocityControl();
             _rotationController.RotationControl();
             _heightController.HeightControl();
-            _velocityController.VelocityControl();
         }
 
         private void Update()

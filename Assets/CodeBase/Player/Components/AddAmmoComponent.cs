@@ -7,8 +7,7 @@ namespace CodeBase.Player.Components
         [SerializeField] private int _addAmmoCount = 5;
         private const string _TAG_PLAYER = "Player";
         private AmmoContainer _ammoContainer;
-
-
+        
         private void Awake() =>
             _ammoContainer = GameObject.FindGameObjectWithTag(_TAG_PLAYER).GetComponent<AmmoContainer>();
         

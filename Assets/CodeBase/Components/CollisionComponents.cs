@@ -7,7 +7,7 @@ namespace CodeBase.Components
 {
     public class CollisionComponents : MonoBehaviour
     {
-        [SerializeField] private bool _returnCollision;
+        [SerializeField] private bool _returnCollisionObject;
         [SerializeField] private CollisionEvent[] _collisionEvents;
         
         private void OnTriggerEnter2D(Collider2D other)
@@ -16,7 +16,7 @@ namespace CodeBase.Components
             {
                 if(collisionEvent.Tag.Contains(other.tag))
                 {
-                    GameObject obj = _returnCollision ? other.gameObject : gameObject;
+                    GameObject obj = _returnCollisionObject ? other.gameObject : gameObject;
                     collisionEvent.Action.Invoke(obj);
                     break;
                 }
